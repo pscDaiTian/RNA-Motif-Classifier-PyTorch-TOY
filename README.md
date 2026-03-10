@@ -1,15 +1,15 @@
 # RNA Motif Classifier: A PyTorch Toy Model for Sequence Feature Extraction
 
-## 📌 Project Overview
+## Project Overview
 This repository contains an end-to-end PyTorch toy model designed to identify specific regulatory motifs (e.g., "UAUAUA") within RNA sequences. It serves as a proof-of-concept for extracting biological sequence features using deep learning architectures. 
 
 
-## 🧬 Biological Problem & Dataset
+## Biological Problem & Dataset
 - **Objective:** Classify 50-nt RNA sequences into positive (contains the target motif) and negative (random sequence) categories.
 - **Data:** 2,000 synthetic RNA sequences (1,000 positive, 1,000 negative) generated via Python.
 - **Preprocessing:** Sequences were converted into numerical matrices using One-Hot Encoding (A=[1,0,0,0], U=[0,1,0,0], etc.).
 
-## 🛠️ Model Evolution & Debugging Journey
+## Model Evolution & Debugging Journey
 
 This project went through three distinct phases, reflecting the critical differences between general neural networks and biological sequence models:
 
@@ -23,15 +23,13 @@ This project went through three distinct phases, reflecting the critical differe
 - **Result:** Accuracy remained low.
 - **Debugging:** Discovered a critical tensor reshaping error. Using `.view(-1, 4, 50)` directly on the flattened 1D array essentially "shredded" the sequence logic, distributing consecutive nucleotides across different channels, destroying the biological continuity of the motif.
 
-### V3: 1D-CNN (Final Corrected Version) - Success 🚀
+### V3: 1D-CNN (Final Corrected Version) - Success
 - **Fix:** Correctly restored the biological structure `(Batch, 50, 4)` first, then applied `.transpose(1, 2)` to meet PyTorch's `(Batch, Channels, Length)` requirement.
 - **Result:** The 1D-CNN successfully scanned the sequence regardless of motif position.
-- **Performance:** **Test Accuracy reached > 99%** within 5 epochs.
 
-## 🚀 How to Run
+## How to Run
 1. Clone this repository.
 2. Ensure you have `torch`, `pandas`, and `numpy` installed.
 3. Run the `RNA_Motif_Classifier_PyTorch.ipynb` notebook cell by cell.
 
-## 💡 Future Directions
-This toy model demonstrates the fundamental logic of sequence embedding and convolutional feature extraction. My next steps involve exploring Transformer-based architectures (self-attention mechanisms) and applying them to real-world, high-throughput transcriptomic datasets.
+
