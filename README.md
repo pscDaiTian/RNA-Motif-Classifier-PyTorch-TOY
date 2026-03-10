@@ -3,7 +3,6 @@
 ## 📌 Project Overview
 This repository contains an end-to-end PyTorch toy model designed to identify specific regulatory motifs (e.g., "UAUAUA") within RNA sequences. It serves as a proof-of-concept for extracting biological sequence features using deep learning architectures. 
 
-As a researcher with a background in plant epigenetics and multi-omics data analysis (primarily utilizing R), this project marks my active transition into building and debugging Deep Learning pipelines in Python to bridge traditional bioinformatics with AI for Science.
 
 ## 🧬 Biological Problem & Dataset
 - **Objective:** Classify 50-nt RNA sequences into positive (contains the target motif) and negative (random sequence) categories.
